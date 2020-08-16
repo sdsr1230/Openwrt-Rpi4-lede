@@ -40,13 +40,6 @@ pushd package/community
 git clone --depth=1 https://github.com/SuLingGG/openwrt-package
 rm -rf openwrt-package/lienol/luci-app-ssr-python-pro-server
 
-# Add mentohust & luci-app-mentohust.
-git clone --depth=1 https://github.com/BoringCat/luci-app-mentohust
-git clone --depth=1 https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk
-
-# Add ServerChan.
-git clone --depth=1 https://github.com/tty228/luci-app-serverchan
-
 # Add luci-app-onliner. (need luci-app-nlbwmon)
 git clone --depth=1 https://github.com/rufengsuixing/luci-app-onliner
 
