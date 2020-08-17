@@ -63,7 +63,4 @@ git clone --depth=1 https://github.com/lisaac/luci-lib-docker
 # Max connections
 sed -i 's/16384/65536/g' package/kernel/linux/files/sysctl-nf-conntrack.conf
 
-# Change dnsmasq to dnsmasq-full
-sed -i 's/dnsmasq i/dnsmasq-full i/g' include/target.mk
-
 
