@@ -16,7 +16,7 @@ popd
 # Copy Lean's packages to ./package/lean.
 mkdir package/lean
 pushd package/lede/package/lean
-cp -r {adbyby,automount,luci-app-adbyby-plus,luci-app-autoreboot,luci-app-cpufreq,luci-app-filetransfer,luci-lib-fs,luci-app-netdata,proxychains-ng,shadowsocksr-libev,tcpping,v2ray,v2ray-plugin} "../../../lean"
+cp -r {adbyby,automount,luci-app-adbyby-plus,luci-app-autoreboot,luci-app-cpufreq,luci-app-filetransfer,luci-lib-fs,microsocks,n2n_v2,npc,pdnsd-alt,redsocks2,luci-app-netdata,proxychains-ng,shadowsocksr-libev,tcpping,v2ray,v2ray-plugin} "../../../lean"
 popd
 
 # Add luci-app-ssr-plus
@@ -60,5 +60,36 @@ git clone --depth=1 https://github.com/bao3/luci-udptools
 git clone --depth=1 https://github.com/lisaac/luci-app-dockerman
 git clone --depth=1 https://github.com/lisaac/luci-lib-docker
 
+# Add tmate
+svn co https://github.com/project-openwrt/openwrt/trunk/package/ctcgfw/tmate
+svn co https://github.com/project-openwrt/openwrt/trunk/package/ctcgfw/msgpack-c
+
+# Add gotop
+svn co https://github.com/project-openwrt/openwrt/trunk/package/ctcgfw/gotop
+
+# Subscribe converters
+svn co https://github.com/project-openwrt/openwrt/trunk/package/ctcgfw/subconverter
+svn co https://github.com/project-openwrt/openwrt/trunk/package/ctcgfw/jpcre2
+svn co https://github.com/project-openwrt/openwrt/trunk/package/ctcgfw/rapidjson
+popd
+
+# Enable irqbalance
+sed -i 's/0/1/g' feeds/packages/utils/irqbalance/files/irqbalance.config
+
+# Max connections
+sed -i 's/16384/65536/g' package/kernel/linux/files/sysctl-nf-conntrack.conf
+
+# Change dnsmasq to dnsmasq-full
+sed -i 's/dnsmasq i/dnsmasq-full i/g' include/target.mk
+
+# Convert Translation
+cp ../scripts/convert-translation.sh .
+chmod +x ./convert-translation.sh
+./convert-translation.sh || true
+
+# Convert Translation
+cp ../scripts/convert-translation.sh .
+chmod +x ./convert-translation.sh
+./convert-translation.sh || true
 
 
