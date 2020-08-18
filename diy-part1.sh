@@ -92,4 +92,7 @@ cp ../scripts/convert-translation.sh .
 chmod +x ./convert-translation.sh
 ./convert-translation.sh || true
 
-
+# Remove upx
+cp ../scripts/remove-upx.sh .
+chmod +x ./remove-upx.sh
+./remove-upx.sh || true
