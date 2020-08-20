@@ -11,3 +11,5 @@ svn co https://github.com/project-openwrt/openwrt/trunk/package/ctcgfw/subconver
 svn co https://github.com/project-openwrt/openwrt/trunk/package/ctcgfw/jpcre2
 svn co https://github.com/project-openwrt/openwrt/trunk/package/ctcgfw/rapidjson
 popd
+
+sed -i 's/16384/65536/g' package/kernel/linux/files/sysctl-nf-conntrack.conf
